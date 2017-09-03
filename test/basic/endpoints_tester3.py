@@ -13,9 +13,18 @@ if address == '':
 print("Making a POST request to /puppies...")
 try:
 	url = address + "/puppies?name=Fido&description=Playful+Little+Puppy"
+	#construct a http request object
 	h = httplib2.Http()
+	#make the request to the particular URL with the apt method
+	#method
+	#and URL
+	#it returns two things 
 	resp, result = h.request(url, 'POST')
+	print("response---->"+str(resp))
+	print("result---->"+str(result))
+	#will convert the json result into an object
 	obj = json.loads(result)
+	#we are going to extract the puppy ID
 	puppyID = obj['Puppy']['id']
 	if resp['status'] != '200':
 		raise Exception('Received an unsuccessful status code of %s' % resp['status'])

@@ -19,7 +19,7 @@ sys.stderr = codecs.getwriter('utf8')(sys.stderr)
 
 #google_api_key = ''
 
-engine = create_engine('sqlite:///restaruants.db')
+engine = create_engine('sqlite:///restaurants.db')
 
 Base.metadata.bind = engine
 DBSession = sessionmaker(bind=engine)
@@ -73,8 +73,6 @@ def restaurant_handler(id):
   	return "Restaurant Deleted"
 
 if __name__ == '__main__':
+    print("in main")
     app.debug = True
     app.run(host='0.0.0.0', port=5000)
-
-
-  
